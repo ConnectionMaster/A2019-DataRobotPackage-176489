@@ -1,0 +1,218 @@
+{
+    "name": "DataRobot Models",
+    "label": "DataRobot Models",
+    "description": "DataRobot Integration with Model Deployments",
+    "group": "com.automationanywhere",
+    "artifactName": "DataRobot",
+    "packageVersion": "1.0.0-20200804-202810",
+    "codeVersion": "1.0.0-20200804-202810",
+    "commands": [
+        {
+            "name": "End Session",
+            "label": "End Session",
+            "description": "Session End",
+            "nodeLabel": "session end {{sessionName}}",
+            "mainClass": "com.automationanywhere.commands.DataRobotIntegration.EndSessionCommand",
+            "icon": "DRicon.svg",
+            "textColor": "#7B848B",
+            "backgroundColor": "#3196D3",
+            "comment": true,
+            "attributes": [
+                {
+                    "name": "sessionName",
+                    "label": "Session name",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Get Best Predictions",
+            "label": "Get Best Predictions",
+            "description": "Get Best Predictions for Data Set",
+            "nodeLabel": "Get Best Predictions for Data Set",
+            "mainClass": "com.automationanywhere.commands.DataRobotIntegration.GetBestPredictionCommand",
+            "icon": "DRicon.svg",
+            "textColor": "#7B848B",
+            "backgroundColor": "#3196D3",
+            "comment": true,
+            "returnType": "LIST",
+            "returnSubtype": "ANY",
+            "returnLabel": "Returns a list of Dictionaries with keys 'score', 'label', 'rowId'",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "sessionName",
+                    "label": "Session name",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "DRKey",
+                    "label": "DataRobot Key",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "ModelID",
+                    "label": "Deployment ID",
+                    "type": "TEXT",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "PredictionType",
+                    "label": "Prediction Type",
+                    "type": "SELECT",
+                    "defaultValue": {
+                        "string": "Multiclass",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "Multiclass",
+                            "value": "Multiclass"
+                        },
+                        {
+                            "label": "Binary",
+                            "value": "Binary"
+                        },
+                        {
+                            "label": "Binary with Explanations",
+                            "value": "BinaryExpl"
+                        }
+                    ]
+                },
+                {
+                    "name": "InputFile",
+                    "label": "Data Set File (.csv (with headers) or .json)",
+                    "type": "FILE",
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Get Deployments",
+            "label": "Get Deployments",
+            "description": "Retrieves Deployment Names, IDs, DataRobot Key and URL for generating predictions",
+            "nodeLabel": "Get Deployments",
+            "mainClass": "com.automationanywhere.commands.DataRobotIntegration.GetDeploymentsCommand",
+            "icon": "DRicon.svg",
+            "textColor": "#7B848B",
+            "backgroundColor": "#3196D3",
+            "comment": true,
+            "returnType": "LIST",
+            "returnSubtype": "UNDEFINED",
+            "returnLabel": "List of Dictionaries with keys: 'modelLabel', 'modelId', 'modelArchType', 'modelType', 'projectId', 'projectName', 'modelStatus', 'modelUrl', 'modelServerId', 'modelDatarobotKey'",
+            "returnRequired": true,
+            "attributes": [
+                {
+                    "name": "sessionName",
+                    "label": "Session name",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Start Session",
+            "label": "Start Session",
+            "description": "Enter Username/PW or API Key to authenticate with DataRobot",
+            "nodeLabel": "Start Session",
+            "mainClass": "com.automationanywhere.commands.DataRobotIntegration.StartSessionCommand",
+            "icon": "DRicon.svg",
+            "textColor": "#7B848B",
+            "backgroundColor": "#3196D3",
+            "comment": true,
+            "attributes": [
+                {
+                    "name": "sessionName",
+                    "label": "Session name",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "Default",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "InferenceURL",
+                    "label": "Inference Base URL",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "https://automationanywhere.orm.datarobot.com",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "AccountBaseURL",
+                    "label": "Account Base URL",
+                    "type": "TEXT",
+                    "defaultValue": {
+                        "string": "https://app.datarobot.com",
+                        "type": "STRING"
+                    },
+                    "rules": [
+                        {
+                            "name": "NOT_EMPTY"
+                        }
+                    ]
+                },
+                {
+                    "name": "APIKeyInput",
+                    "label": "API Key",
+                    "type": "CREDENTIAL"
+                }
+            ]
+        }
+    ]
+}

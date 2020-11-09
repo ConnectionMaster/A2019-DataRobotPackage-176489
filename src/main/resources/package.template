@@ -1,0 +1,10 @@
+{
+  "name": "DataRobot Models",
+  "label": "DataRobot Models",
+  "description": "DataRobot Integration with Model Deployments",
+  "group": "",
+  "artifactName": "",
+  "packageVersion": "2.0.0",
+  "codeVersion": "",
+  "commands": []
+}
